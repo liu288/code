@@ -1,6 +1,5 @@
 package com.springboot.demo.controller;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.google.common.collect.Maps;
@@ -10,7 +9,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -107,7 +105,7 @@ public class UserController {
 //        return users;
 //    }
 
-    @PostMapping("/selectById")
+    @GetMapping("/selectById")  //这里用增强swaggerUI发送请求时@PostMapping接受不到id参数
     @ApiOperation(value = "根据用户id查询找用户信息", notes = "查询用户信息")
     @ApiImplicitParam(paramType = "query", dataType = "Long", name = "id", value = "用户id", required = true)
     public User selectById(@RequestParam Long id) {
